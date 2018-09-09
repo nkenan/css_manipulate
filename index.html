@@ -12,7 +12,7 @@
     <br/>
     css_manipulate(Options);
 
-    <h2>Input</h2>
+    <h2 id="h2Input">Input</h2>
     <ol>
       <li>
         <h4>Options</h4>
@@ -38,43 +38,21 @@
     </ul>
     <script src="./css_manipulate.js" charset="utf-8"></script>
     <script type="text/javascript">
-    // let preset = [];
-    //
-    // let update = {
-    //   selector: `h1`,
-    //   attributes: [{
-    //     key: `font-size`,
-    //     value: `2.1rem`
-    //   },{
-    //     key: `font-style`,
-    //     value: `italic`
-    //   },{
-    //     key: `font-style`,
-    //     value: `italic`
-    //   }]
-    // }
-    //
-    // preset.push(update)
-    // css_manipulate(preset)
-    </script>
-    <script type="text/javascript">
-    let i, secondsToFade = 3, preset_computedm, timeToWait = 1000 / secondsToFade;
 
-    const css_fade = (_params = {selector: "h1", key: "font-size", value: 3}) => {
-      for(i = 0; i < secondsToFade; i * 1.1) {
-        setTimeout(() => {
-          console.log(`Computed i: ${i}`);
-          preset_computed = [{
-            selector: _params.selector,
-            key: _params.key,
-            selector: i * 0.3
-          }];
-          css_manipulate(preset_computed);
-        }, timeToWait)
-      }
+    let i = 0;
+    let animationMS = 1;
+    const css_fade = (_params) => {
+      setTimeout(() => {
+        // document.body.style.backgroundColor = `rgba(${i}, ${i}, ${i}, 1)`;
+        let computed = [{selector: _params.selector, attributes: [{key: _params.key, value: {target: `${i}`, unit: `${_params.value.unit}`}}]}];
+        css_manipulate(computed);
+        i+=0.06;
+        if(i <= _params.value.target) css_fade(_params)
+      }, animationMS);
+    }
 
-    };
-    css_fade();
+    css_fade({selector: 'h1', key: 'font-size', value: {target: 6, unit: `rem`}});
+    css_fade({selector: 'h2', key: 'font-size', value: {target: 9, unit: `rem`}});
     </script>
 
   </body>
