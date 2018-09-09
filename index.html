@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="./main.css">
+    <meta charset="utf-8">
+    <title>css_manipulate - use css-like presets to render your html</title>
+  </head>
+  <body>
+    <h1>css_manipulate</h1>
+    <h2>Change your html view with css-like presets</h2>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+    <br/>
+    css_manipulate(Options);
+
+    <h2>Input</h2>
+    <ol>
+      <li>
+        <h4>Options</h4>
+        Options MUST be an array of objects. Every object consists of three properties: 1. selector, 2. key, 3. attributes. Where selector and key hold values of String type the attributes key contains an array of css properties.<br>
+        <br/>
+        Within a
+        <ul>
+          <li><h3>selector</h3>:String<br/>An html tag or an id, e.g. 'h1' or '#someId'</li>
+          <li><h3>key</h3>:String<br/>A property to set, e.g. 'font-size'</li>
+          <li><h3>value</h3>:String<br/>The value for _params.key to set, e.g. '2rem'</li>
+        </ul>
+      </li>
+      <li>
+        <h4>Example</h4>
+        css_manipulate()
+      </li>
+    </ol>
+
+
+    <h2>Output</h2>
+    <ul>
+      <li></li>
+    </ul>
+    <script src="./css_manipulate.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    // let preset = [];
+    //
+    // let update = {
+    //   selector: `h1`,
+    //   attributes: [{
+    //     key: `font-size`,
+    //     value: `2.1rem`
+    //   },{
+    //     key: `font-style`,
+    //     value: `italic`
+    //   },{
+    //     key: `font-style`,
+    //     value: `italic`
+    //   }]
+    // }
+    //
+    // preset.push(update)
+    // css_manipulate(preset)
+    </script>
+    <script type="text/javascript">
+    let i, secondsToFade = 3, preset_computedm, timeToWait = 1000 / secondsToFade;
+
+    const css_fade = (_params = {selector: "h1", key: "font-size", value: 3}) => {
+      for(i = 0; i < secondsToFade; i * 1.1) {
+        setTimeout(() => {
+          console.log(`Computed i: ${i}`);
+          preset_computed = [{
+            selector: _params.selector,
+            key: _params.key,
+            selector: i * 0.3
+          }];
+          css_manipulate(preset_computed);
+        }, timeToWait)
+      }
+
+    };
+    css_fade();
+    </script>
+
+  </body>
+</html>
